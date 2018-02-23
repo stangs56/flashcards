@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QPushButton
-from ImagePreview import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 
 class MainMenu(QWidget):
 
@@ -24,8 +24,12 @@ class MainMenu(QWidget):
 
             row.addStretch(1)
             #image would go here
-            image = ImagePreview()
-            row.addWidget(image)
+            label = QLabel(self)
+            #Needs to have dynamic pathing
+            pixmap = QPixmap('example.jpg')
+            resize_pixmap = pixmap.scaled(32, 32)
+            label.setPixmap(resize_pixmap)
+            row.addWidget(label)
 
             row.addStretch(5)
 
